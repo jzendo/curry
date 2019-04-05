@@ -1,0 +1,23 @@
+{
+  "name": "jzendo_curry",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jzendo/curry.git",
+  "author": "j <jzendo@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.0",
+    "jest": "^24.7.0"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production parcel build src/index.js --global currify",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "invariant": "^2.2.4"
+  }
+}
