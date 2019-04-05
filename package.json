@@ -1,0 +1,34 @@
+{
+  "name": "currify",
+  "description": "A curry implement by jzendo",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/jzendo/curry.git",
+  "author": "j <jzendo@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "jest": "^24.7.0",
+    "prettier": "1.16.4",
+    "pretty-quick": "^1.10.0"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production parcel build src/index.js --global currify",
+    "prettier": "prettier --write \"src/**/*.js\"",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern src/**/*.js"
+    }
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "invariant": "^2.2.4"
+  }
+}
