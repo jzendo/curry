@@ -13,13 +13,13 @@ const continuePassArgsOrFired = function(fn, args, targetLen) {
 }
 
 const curry = fn => {
-  invariant(typeof fn === 'function', 'Should pass function.')
+  invariant(typeof fn === 'function', 'should use a function as parameter.')
 
   const fnLen = fn.length
-
   const curryWrapper = function(arg0) {
     return continuePassArgsOrFired(fn, [...arguments], fnLen)
   }
+
   return curryWrapper
 }
 
