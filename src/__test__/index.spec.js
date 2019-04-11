@@ -10,6 +10,10 @@ test('test args', () => {
   expect(() => {
     curry()
   }).toThrow()
+
+  expect(() => {
+    curry()
+  }).toThrowError(/function as parameter/)
 })
 
 test('test function', () => {
