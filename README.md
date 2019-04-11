@@ -1,2 +1,2 @@
 # curry
-A curry implement
+A curry implement.
