@@ -1,30 +1,34 @@
 import invariant from 'invariant'
 
-const ERROR_PARAM_FN = 'should use a function as parameter.'
+const ERROR_PARAM_INVALID_FN = 'should use a function as parameter.'
 
 const continuePassArgsOrFired = function continuePassArgsOrFired(
   fn,
   args,
-  targetLen
+  maxArgsNum
 ) {
-  const len = args.length
+  const currentArgsNum = args.length
 
-  if (len >= targetLen) {
-    return fn.apply(null, args.slice(0, targetLen))
+  if (currentArgsNum >= maxArgsNum) {
+    return fn.apply(null, args.slice(0, maxArgsNum))
   } else {
     return function acceptArgsWrapper() {
-      return continuePassArgsOrFired(fn, [...args, ...arguments], targetLen)
+      return continuePassArgsOrFired(fn, [...args, ...arguments], maxArgsNum)
     }
   }
 }
 
 const curry = fn => {
-  invariant(typeof fn === 'function', ERROR_PARAM_FN)
+  invariant(typeof fn === 'function', ERROR_PARAM_INVALID_FN)
 
   const fnLen = fn.length
+
   const curryWrapper = function curryWrapper(arg0) {
     return continuePassArgsOrFired(fn, [...arguments], fnLen)
   }
+
+  // Store origin function
+  curryWrapper.fn = fn
 
   return curryWrapper
 }
